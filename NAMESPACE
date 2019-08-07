@@ -1,0 +1,8 @@
+export(punctReplace)
+export(replacePunct)
+export(spellReplace)
+export(freqForWordCloud)
+export(generateWordCloudData)
+import(hunspell)
+import(tm)
+import(magrittr)
