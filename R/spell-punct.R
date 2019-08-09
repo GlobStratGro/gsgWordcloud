@@ -1,5 +1,6 @@
 replacePunct <- function(txt) {
     txt <- gsub("/|,", " / ", txt)
+    txt <- gsub("\\(|\\)", " ", txt)
     txt <- gsub("[^[:print:]]", "", txt)
     txt <- gsub("[^[:graph:]]", " ", txt)
     out <- removePunctuation(txt,

@@ -3,7 +3,8 @@
 \alias{punctReplace}
 \title{Remove All Non-Word Punctiation}
 \usage{
-replacePunct(txt)
+punctReplace(txt)
+replacePunct(txt) ## old wrapper - use punctReplace() for convention
 }
 \arguments{
 \item{txt}{a character or character vector}

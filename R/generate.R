@@ -43,7 +43,7 @@ generateWordCloudData <- function(txt,
 
     # write file to view spelling changes
     if (spellcheck) {
-        write.csv(txt$replacements,
+        write.csv(txt$replacements[tolower(txt$replacements$word) != tolower(txt$replacements$replacement),],
                   file = paste0(dir, "/made_spelling_replacements.csv"),
                   row.names = F)
     } else {
