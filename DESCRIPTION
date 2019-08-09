@@ -1,7 +1,7 @@
 Package: gsgWordcloud
 Type: Package
 Title: Interface for Creating Wordclouds Faster
-Version: 2.1.0
+Version: 2.1.1
 Author: Matt Garber
 Maintainer: Matt Garber <mgarber@sas.upenn.edu>
 Description: Use this package to create wordclouds faster than the standard by hand process.
