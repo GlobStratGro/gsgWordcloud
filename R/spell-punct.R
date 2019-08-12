@@ -2,7 +2,7 @@ replacePunct <- function(txt) {
     txt <- gsub("/|,", " / ", txt)
     txt <- gsub("\\(|\\)", " ", txt)
     txt <- gsub("[^[:print:]]", "", txt)
-    txt <- gsub("[^[:graph:]]", " ", txt)
+    txt <- stringr::str_replace_all(txt, "[^[:graph:]]", " ")
     out <- removePunctuation(txt,
                              preserve_intra_word_contractions = TRUE,
                              preserve_intra_word_dashes = TRUE)
@@ -23,7 +23,6 @@ spellReplaceHelper <- function(txt, bad, good,
                     " and forced replace words must",
                     " be the same length."))
     }
-
 
     if (length(bad) == 0) { # base case
         return (list(text = txt,
@@ -82,6 +81,16 @@ spellReplace <- function(txt, keepWords = NULL, replaceWords = NULL) {
     txt <- tolower(txt)
     keepWords <- tolower(keepWords)
     replaceWords <- tolower(replaceWords)
+
+    d <- duplicated(keepWords, fromLast = TRUE)
+    if (sum(d) > 0) {
+        warning(paste0("Found ",
+                       sum(d),
+                       " duplication(s) in keepWords -- using latest entries"))
+        keepWords <- keepWords[!d]
+        replaceWords <- replaceWords[!d]
+    }
+
     txt <- replacePunct(txt)
     txt <- paste(na.omit(txt), collapse = " ")
     bad <- hunspell::hunspell(txt) %>% unlist() %>% unique()

@@ -12,6 +12,15 @@ myBind <- function(x, left = 1, right = length(x), type = "df.row") {
 
 
 
+.natoempty <- function(test) {
+    if (is.character(test) | sum(is.na(test)) == length(test)) {
+        return(ifelse(is.na(test), "", test))
+    } else {
+        return(test)
+    }
+}
+
+
 .myBindHelper <- function(x, left, right, type) {
     if (type == "vec") {
         binder <- c
