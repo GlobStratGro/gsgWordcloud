@@ -1,8 +1,7 @@
 replacePunct <- function(txt) {
     txt <- gsub("/|,", " / ", txt)
     txt <- gsub("\\(|\\)", " ", txt)
-    txt <- gsub("[^[:print:]]", "", txt)
-    txt <- stringr::str_replace_all(txt, "[^[:graph:]]", " ")
+    txt <- .cleanEncoding(txt)
     out <- removePunctuation(txt,
                              preserve_intra_word_contractions = TRUE,
                              preserve_intra_word_dashes = TRUE)
@@ -77,6 +76,11 @@ spellReplace <- function(txt, keepWords = NULL, replaceWords = NULL) {
     replacements <- data.frame(word = character(0),
                                replacement = character(0),
                                stringsAsFactors = F)
+
+    txt <- .cleanEncoding(txt)
+    keepWords <- .cleanEncoding(keepWords)
+    replaceWords <- .cleanEncoding(replaceWords)
+
     txt <- na.omit(txt)
     txt <- tolower(txt)
     keepWords <- tolower(keepWords)
