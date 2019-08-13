@@ -10,7 +10,11 @@ myBind <- function(x, left = 1, right = length(x), type = "df.row") {
                                     type = type)))
 }
 
-
+.cleanEncoding <- function(txt) {
+    txt <- gsub("[^[:print:]]", "", txt)
+    txt <- stringr::str_replace_all(txt, "[^[:graph:]]", " ")
+    return(txt)
+}
 
 .natoempty <- function(test) {
     if (is.character(test) | sum(is.na(test)) == length(test)) {
