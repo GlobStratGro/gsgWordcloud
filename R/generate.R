@@ -34,16 +34,16 @@ generateWordCloudData <- function(txt,
     writeLines(out, con = paste0(dir,"/cleanedOEs.txt"))
 
     # write file to view spelling changes
-    if (spellcheck) {
+    #if (spellcheck) {
         write.csv(txt$replacements[tolower(txt$replacements$word) != tolower(txt$replacements$replacement),],
                   file = paste0(dir, "/made_spelling_replacements.csv"),
                   row.names = F)
-    } else {
-        write.csv(data.frame(word = character(0),
-                             replacement = character(0)),
-                  file = paste0(dir, "/made_spelling_replacements.csv"),
-                  rownames = F)
-    }
+    # } else {
+    #     write.csv(data.frame(word = character(0),
+    #                          replacement = character(0)),
+    #               file = paste0(dir, "/made_spelling_replacements.csv"),
+    #               row.names = F)
+    # }
 
     if (!is.null(keepWords) & !is.null(replaceWords)) {
         write.csv(data.frame(keep = keepWords,
