@@ -8,7 +8,7 @@ generateWordCloudData(txt, spellcheck = TRUE, combine = TRUE, name = "wordcloud_
 \arguments{
 \item{txt}{a character or character vector, the text data you wish to use}
 
-\item{spellcheck}{logical, whether or not to spellcheck the input. Defautls to \code{TRUE}}
+\item{spellcheck}{logical, whether or not to spellcheck the input. Defaults to \code{TRUE}. Custom-entered replacements will be made regardless.}
 \item{combine}{logical, whether or not to stem and combine the input. Defautls to \code{TRUE}}
 
 \item{name}{a character, the name of the folder to output the data to. Defaults to \code{wordcloud_text}}
