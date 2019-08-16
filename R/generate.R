@@ -9,20 +9,12 @@ generateWordCloudData <- function(txt,
                                   mergereplace = NULL,
                                   bestkeep = NULL,
                                   bestreplace = NULL) {
-    if (spellcheck) {
-        txt <- spellReplace(txt, keepWords = keepWords, replaceWords = replaceWords)
-        df <- freqForWordCloud(txt$text,
-                               bestkeep = bestkeep,
-                               bestreplace = bestreplace,
-                               mergekeep = mergekeep,
-                               mergereplace = mergereplace)
-    } else {
-        df <- freqForWordCloud(txt,
-                               bestkeep = bestkeep,
-                               bestreplace = bestreplace,
-                               mergekeep = mergekeep,
-                               mergereplace = mergereplace)
-    }
+    txt <- spellReplace(txt, keepWords = keepWords, replaceWords = replaceWords, spellcheck)
+    df <- freqForWordCloud(txt$text,
+                           bestkeep = bestkeep,
+                           bestreplace = bestreplace,
+                           mergekeep = mergekeep,
+                           mergereplace = mergereplace)
 
 
     out <- df[!is.na(df$best.source),]

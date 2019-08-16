@@ -2,6 +2,7 @@
 % Please edit documentation in R/gsgWordcloud.R
 \docType{package}
 \name{gsgWordcloud}
+\alias{gsgWordcloud}
 \alias{gsgWordcloud-package}
 \title{API for Wordclouds}
 \description{

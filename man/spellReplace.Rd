@@ -4,7 +4,8 @@
 \alias{spellReplace}
 \title{Replace all misspelled words with either the suggested replacement or the specified replacement}
 \usage{
-spellReplace(txt, keepWords = NULL, replaceWords = NULL)
+spellReplace(txt, keepWords = NULL, replaceWords = NULL,
+  spellcheck = TRUE)
 }
 \arguments{
 \item{txt}{a character or character vector to be spell checked}
@@ -12,6 +13,8 @@ spellReplace(txt, keepWords = NULL, replaceWords = NULL)
 \item{keepWords}{a character vector of words to not replace with the inferred best word}
 
 \item{replaceWords}{a character vector of the same length as \code{keepWords} of the user-defined replacements for the given words}
+
+\item{spellcheck}{logical, defaults to \code{TRUE}. If \code{TRUE}, does an automatic spell check with hunspell. If \code{FALSE}, makes only the user entered replacements.}
 }
 \value{
 A list with two fields: \code{text}, a character or character vector with only single spaces, and \code{replacements}, a dataframe documenting each word replaced and what it was replaced by.
@@ -21,7 +24,4 @@ Replace all misspelled words with either the suggested replacement or the specif
 }
 \note{
 This will sometimes remove some/all punctuation and other times may add punctuation.
-}
-\examples{
-collapseWS("hello    world") # "hello world"
 }
